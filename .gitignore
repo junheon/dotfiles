@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Hammerspoon
+hammerspoon/*.tmp
+hammerspoon/*.log
+
+# 개인 정보
+secrets/
+*.key
+*.pem
+*.env
+
+# Backup files
+*.backup
+*~
