@@ -23,7 +23,6 @@
 │   ├── doom/                 # Doom Emacs
 │   ├── emacs/                # GNU Emacs
 │   ├── opencode/             # OpenCode editor
-│   ├── raycast/              # Productivity tool
 │   ├── broot/                # File browser
 │   ├── gh/                   # GitHub CLI
 │   ├── gh-dash/              # GitHub dashboard
@@ -115,11 +114,6 @@
 
 **containers/** - Podman containers
 - 컨테이너 설정
-
-#### 프로덕티비티
-
-**raycast/** - macOS productivity tool
-- 단축키, 스크립트, 확장
 
 ### Hammerspoon
 - **자동 입력 소스 전환**: Ghostty 앱에 포커스 시 자동으로 영어 입력 소스로 전환
