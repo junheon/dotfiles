@@ -37,3 +37,6 @@ config/gh/hosts.yml
 config/rclone/
 config/zed/conversations/
 config/zed/prompts/
+
+# Raycast - managed by Raycast Cloud Sync
+config/raycast/
