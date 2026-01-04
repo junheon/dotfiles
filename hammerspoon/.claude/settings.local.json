@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(du:*)",
+      "Bash(xargs -I {} bash -c 'echo -n \"\"\"\"{}: \"\"\"\"; du -sh {} | cut -f1')",
+      "Bash(cat:*)"
+    ]
+  }
+}

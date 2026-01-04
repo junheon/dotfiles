@@ -25,6 +25,10 @@ config/*/.local/
 config/fish/fish_variables
 config/**/*.bak
 config/emacs/.git/
+config/**/.*git/
+config/containers/podman/machine/
+config/**/*.lock
+config/**/*.socket
 
 # Sensitive config files
 config/gh/hosts.yml
