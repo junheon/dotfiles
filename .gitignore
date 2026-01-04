@@ -35,3 +35,5 @@ config/**/*.socket
 # Sensitive config files
 config/gh/hosts.yml
 config/rclone/
+config/zed/conversations/
+config/zed/prompts/
