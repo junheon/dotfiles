@@ -25,6 +25,8 @@ config/*/.local/
 config/fish/fish_variables
 config/**/*.bak
 config/emacs/.git/
+config/doom/.local/
+config/opencode/.local/
 config/**/.*git/
 config/containers/podman/machine/
 config/**/*.lock
