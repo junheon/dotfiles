@@ -30,6 +30,8 @@
 │   ├── containers/           # Podman containers
 │   └── waveterm/             # Terminal
 ├── Brewfile                   # Homebrew 패키지 목록
+├── scripts/
+│   └── auto-sync.sh          # 자동 동기화 스크립트
 ├── install.sh                 # 자동 설치 스크립트
 ├── .gitignore
 └── README.md
@@ -125,6 +127,56 @@
 ### Homebrew
 - Brewfile로 설치된 모든 패키지 관리
 - 새 노트북에서 한 번에 환경 복원 가능
+
+### 자동 동기화
+
+로컬 설정 변경사항을 자동으로 GitHub에 동기화합니다.
+
+**기능:**
+- **30분마다 자동 실행**: launchd를 통해 주기적으로 실행
+- **macOS 알림**: 변경사항 발생 시 알림 표시
+- **자동 충돌 해결**: git pull --rebase로 자동 병합
+- **자동 커밋 & 푸시**: 변경사항을 자동으로 커밋하고 GitHub에 푸시
+
+**실행 방법:**
+
+서비스 시작 (재부팅 후 자동 시작):
+```bash
+# launchd 서비스 등록
+launchctl load ~/Library/LaunchAgents/com.user.dotfiles-sync.plist
+
+# 동작 확인
+launchctl list | grep dotfiles
+```
+
+서비스 중지:
+```bash
+launchctl unload ~/Library/LaunchAgents/com.user.dotfiles-sync.plist
+```
+
+수동 실행:
+```bash
+~/workspace/personal/dotfiles/scripts/auto-sync.sh
+```
+
+로그 확인:
+```bash
+# 전체 로그
+tail -f ~/Library/Logs/dotfiles-sync/sync.log
+
+# 출력 로그
+cat ~/Library/Logs/dotfiles-sync/output.log
+
+# 에러 로그
+cat ~/Library/Logs/dotfiles-sync/error.log
+```
+
+**주기 변경:**
+
+`~/Library/LaunchAgents/com.user.dotfiles-sync.plist`의 `StartInterval` 값 수정 (단위: 초)
+- 5분: 300
+- 30분: 1800 (현재)
+- 1시간: 3600
 
 ## 새 노트북 세팅
 
