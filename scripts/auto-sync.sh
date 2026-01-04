@@ -31,6 +31,14 @@ else
     log "WARNING: Pull had issues, continuing..."
 fi
 
+# Update Brewfile
+log "Updating Brewfile..."
+if brew bundle dump --force --file="$DOTFILES_DIR/Brewfile" >> "$LOG_FILE" 2>&1; then
+    log "Brewfile updated"
+else
+    log "WARNING: Brewfile update failed"
+fi
+
 # Check for local changes
 if ! git diff --quiet; then
     # Get list of changed files
