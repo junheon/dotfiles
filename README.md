@@ -132,52 +132,32 @@
 
 로컬 설정 변경사항을 자동으로 GitHub에 동기화합니다.
 
-**기능:**
-- **30분마다 자동 실행**: launchd를 통해 주기적으로 실행
-- **Brewfile 자동 업데이트**: 설치된 Homebrew 패키지 목록 자동 갱신
-- **macOS 알림**: 변경사항 발생 시 알림 표시
-- **자동 충돌 해결**: git pull --rebase로 자동 병합
-- **자동 커밋 & 푸시**: 변경사항을 자동으로 커밋하고 GitHub에 푸시
+**Claude가 30분마다 자동으로 실행:**
+- git pull --rebase로 원격 저장소 최신화
+- brew bundle dump로 Brewfile 업데이트
+- 변경사항 자동 커밋 & 푸시
+- 새 패키지 알림 표시
 
-**실행 방법:**
-
-서비스 시작 (재부팅 후 자동 시작):
+**수동 실행:**
 ```bash
-# launchd 서비스 등록
-launchctl load ~/Library/LaunchAgents/com.user.dotfiles-sync.plist
-
-# 동작 확인
-launchctl list | grep dotfiles
+cd ~/workspace/personal/dotfiles
+./scripts/auto-sync.sh
 ```
 
-서비스 중지:
+**로그 확인:**
 ```bash
-launchctl unload ~/Library/LaunchAgents/com.user.dotfiles-sync.plist
-```
-
-수동 실행:
-```bash
-~/workspace/personal/dotfiles/scripts/auto-sync.sh
-```
-
-로그 확인:
-```bash
-# 전체 로그
+# 실시간 로그 모니터링
 tail -f ~/Library/Logs/dotfiles-sync/sync.log
-
-# 출력 로그
-cat ~/Library/Logs/dotfiles-sync/output.log
-
-# 에러 로그
-cat ~/Library/Logs/dotfiles-sync/error.log
 ```
 
-**주기 변경:**
+**다중 컴퓨터 사용 시:**
 
-`~/Library/LaunchAgents/com.user.dotfiles-sync.plist`의 `StartInterval` 값 수정 (단위: 초)
-- 5분: 300
-- 30분: 1800 (현재)
-- 1시간: 3600
+다른 Mac에서 설치한 새 패키지가 있으면 알림이 표시됩니다. 알림을 받으면 다음을 실행:
+
+```bash
+cd ~/workspace/personal/dotfiles
+brew bundle install --no-upgrade  # 새 패키지만 설치
+```
 
 ## 새 노트북 세팅
 

@@ -322,3 +322,62 @@ mv ~/.hammerspoon.backup ~/.hammerspoon
 
 - **README.md**: 일반 사용자용 공개 문서
 - **CLAUDE.md**: Claude Code용 상세 개발 가이드 (이 파일)
+
+---
+
+## Claude 에이전트 역할
+
+Claude Code는 사용자의 Mac 개발 환경 관리자/에이전트로 다음 작업을 수행합니다.
+
+### 주기적 작업 (30분마다)
+
+1. **Dotfiles 동기화 실행**
+   ```bash
+   cd ~/workspace/personal/dotfiles
+   ./scripts/auto-sync.sh
+   ```
+
+2. **로그 확인**
+   ```bash
+   tail -20 ~/Library/Logs/dotfiles-sync/sync.log
+   ```
+
+3. **변경사항 보고**
+   - 새 패키지 알림 감지 시 사용자에게 알림
+   - Git 충돌 발생 시 보고
+   - 에러 로그 모니터링 및 보고
+
+### auto-sync.sh 실행 흐름
+
+1. **git pull --rebase**: 원격 저장소 최신화
+2. **Brewfile 변경 감지**: 다른 컴퓨터에서 설치한 새 패키지 확인
+3. **brew bundle dump**: 로컬 패키지 목록 업데이트
+4. **변경사항 커밋**: 자동으로 커밋 & 푸시
+5. **macOS 알림**: 새 패키지 있으면 알림 표시
+
+### 다중 컴퓨터 동기화
+
+**컴퓨터 A에서 작업:**
+```bash
+brew install python  # 패키지 설치
+# 30분 후...
+# auto-sync 실행: Brewfile 업데이트 → commit → push
+```
+
+**컴퓨터 B에서 auto-sync 실행:**
+```bash
+# git pull로 Brewfile 변경사항 가져옴
+# 새 패키지 감지되면 macOS 알림 표시
+# 사용자가 편할 때 수동으로 설치:
+cd ~/workspace/personal/dotfiles
+brew bundle install --no-upgrade  # 새 패키지만 설치
+```
+
+**중요**: `--no-upgrade` 플래그를 사용하여 새 패키지만 설치하고, 기존 패키지는 업그레이드하지 않습니다.
+
+### 상시 모니터링
+
+- **새 패키지 알림**: 다른 Mac에서 설치한 패키지 감지
+- **Git 충돌**: rebase 실패 또는 충돌 감지
+- **에러 로그**: sync.log, output.log, error.log 모니터링
+

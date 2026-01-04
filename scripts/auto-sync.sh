@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Dotfiles Auto-Sync Script
-# Runs every 30 minutes via launchd to sync config changes
+# Syncs config changes and detects new packages from other computers
+# Run by Claude every 30 minutes
 
 LOG_DIR="$HOME/Library/Logs/dotfiles-sync"
 LOG_FILE="$LOG_DIR/sync.log"
@@ -29,6 +30,19 @@ if git pull --rebase origin main >> "$LOG_FILE" 2>&1; then
     log "Pull successful"
 else
     log "WARNING: Pull had issues, continuing..."
+fi
+
+# Check for Brewfile changes from remote
+if git diff ORIG_HEAD HEAD --name-only | grep -q "Brewfile"; then
+    # Count new packages
+    NEW_PACKAGES=$(git diff ORIG_HEAD HEAD Brewfile | grep "^+brew" | wc -l | tr -d ' ')
+
+    if [ "$NEW_PACKAGES" -gt 0 ]; then
+        log "New packages detected in Brewfile: $NEW_PACKAGES"
+
+        # Show macOS notification
+        osascript -e "display notification \"$NEW_PACKAGES new packages in Brewfile\" with title \"🍺 Dotfiles Sync\" subtitle \"Run: brew bundle install --no-upgrade\"" 2>/dev/null
+    fi
 fi
 
 # Update Brewfile
