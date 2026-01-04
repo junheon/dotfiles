@@ -22,12 +22,18 @@
 ├── README.md              # 일반 사용자용 문서
 ├── Brewfile               # Homebrew 패키지 목록
 ├── install.sh             # 자동 설치 스크립트
-└── hammerspoon/           # Hammerspoon 자동화 설정
-    ├── init.lua
-    └── input-source-switcher.lua
+├── hammerspoon/           # Hammerspoon 자동화 설정
+│   ├── init.lua
+│   └── input-source-switcher.lua
+└── config/                # ~/.config 디렉토리 설정
+    ├── nvim/              # Neovim (LazyVim)
+    ├── git/               # Git 전역 설정
+    ├── fish/              # Fish shell
+    └── zellij/            # Terminal multiplexer
 
 심볼릭 링크:
 ~/.hammerspoon → ~/workspace/personal/dotfiles/hammerspoon/
+~/.config → ~/workspace/personal/dotfiles/config/
 ```
 
 **원본 vs 심볼릭 링크:**
@@ -36,16 +42,22 @@
 
 ## 주요 기능
 
-### 1. Hammerspoon 자동화
+### 1. 개발 도구 설정 관리 (~/.config)
+- **Neovim**: LazyVim 설정 (keymaps, plugins, options)
+- **Git**: 전역 gitignore 및 설정
+- **Fish**: Shell 환경 설정
+- **Zellij**: Terminal multiplexer 키바인딩 및 플러그인
+
+### 2. Hammerspoon 자동화
 - **자동 입력 소스 전환**: 특정 앱에 포커스 시 자동으로 영어/한글 전환
 - **현재 설정**: Ghostty 앱 포커스 시 영어로 자동 전환
 
-### 2. Homebrew 패키지 관리
+### 3. Homebrew 패키지 관리
 - Brewfile로 모든 설치된 패키지 추적
 - `brew bundle install`로 새 노트북에서 빠른 복원
 - `brew bundle dump`로 패키지 목록 업데이트
 
-### 3. 자동화된 설치
+### 4. 자동화된 설치
 - `install.sh` 스크립트로 원클릭 환경 구성
 - Homebrew 설치, 패키지 설치, 심볼릭 링크 생성 자동화
 
@@ -104,6 +116,75 @@ git push
 # Hammerspoon 리로드
 # ⌘⌃R
 ```
+
+---
+
+## ~/.config 상세
+
+개발 도구 설정 파일들 (XDG Base Directory 표준)
+
+### 포함된 설정
+
+#### 1. Neovim (nvim/)
+- **설정 유형**: LazyVim
+- **주요 파일**:
+  - `init.lua` - 메인 설정
+  - `lua/config/` - keymaps, options, autocmds
+  - `lua/plugins/` - 플러그인 설정
+- **사용법**:
+  ```bash
+  nvim  # 설정이 자동으로 로드됨
+  ```
+
+#### 2. Git (git/)
+- **파일**: `ignore` - 전역 gitignore
+- **적용 범위**: 모든 Git 프로젝트
+- **사용법**:
+  ```bash
+  # 자동으로 적용됨
+  # 추가하려면: vim ~/.config/git/ignore
+  ```
+
+#### 3. Fish Shell (fish/)
+- **파일**: `config.fish`, `conf.d/`, `functions/`
+- **사용법**:
+  ```bash
+  fish  # Shell 시작 시 자동 로드
+  ```
+- **참고**: `fish_variables`는 .gitignore에서 제외됨 (런타임 생성)
+
+#### 4. Zellij (zellij/)
+- **파일**: `config.kdl` - 키바인딩 및 플러그인
+- **사용법**:
+  ```bash
+  zellij  # 설정 자동 로드
+  ```
+
+### ~/.config 추가 설정
+
+Phase 2로 추가 가능한 설정:
+- `alacritty/` - Terminal emulator
+- `ghostty/` - Modern terminal
+- `zed/` - 에디터
+- `gh/` - GitHub CLI (hosts.yml 제외)
+
+Phase 3로 추가 가능한 설정:
+- `broot/` - File browser
+- `containers/` - Podman
+- `uv/` - Python package manager
+
+### 제외된 파일
+
+.gitignore에서 자동 제외:
+- `configstore/` - NPM 캐시
+- `*/node_modules/` - Node 의존성
+- `*/.local/` - 빌드 아티팩트
+- `fish/fish_variables` - Shell 런타임 상태
+- `**/*.bak` - 백업 파일
+
+민감한 정보 제외:
+- `gh/hosts.yml` - GitHub 토큰
+- `rclone/` - 클라우드 인증 정보
 
 ---
 

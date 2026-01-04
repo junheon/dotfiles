@@ -17,3 +17,15 @@ secrets/
 # Backup files
 *.backup
 *~
+
+# Config directory exclusions
+config/configstore/
+config/*/node_modules/
+config/*/.local/
+config/fish/fish_variables
+config/**/*.bak
+config/emacs/.git/
+
+# Sensitive config files
+config/gh/hosts.yml
+config/rclone/

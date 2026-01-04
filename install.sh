@@ -45,16 +45,39 @@ else
     echo "✓ Symlink created"
 fi
 
-# 4. 완료 메시지
+# 4. ~/.config 심링크 생성
+echo "🔗 Creating ~/.config symlink..."
+if [ -e ~/.config ]; then
+    if [ -L ~/.config ]; then
+        echo "✓ Symlink already exists"
+    else
+        echo "Backing up existing ~/.config to ~/.config.backup"
+        mv ~/.config ~/.config.backup
+        ln -s "$DOTFILES_DIR/config" ~/.config
+        echo "✓ Symlink created"
+    fi
+else
+    ln -s "$DOTFILES_DIR/config" ~/.config
+    echo "✓ Symlink created"
+fi
+
+# 5. 완료 메시지
 echo ""
 echo "✅ Dotfiles installation complete!"
 echo ""
 echo "Next steps:"
 echo "  1. Reload Hammerspoon (⌘⌃R)"
-echo "  2. Check that input source switching works"
+echo "  2. Restart your shell to apply config changes"
+echo "  3. Check that input source switching works"
+echo ""
+echo "Installed configurations:"
+echo "  - Hammerspoon (auto input source switching)"
+echo "  - Neovim (LazyVim)"
+echo "  - Git (global config)"
+echo "  - Fish shell"
+echo "  - Zellij (terminal multiplexer)"
 echo ""
 echo "To add more dotfiles:"
-echo "  - Add config files to $DOTFILES_DIR"
-echo "  - Create symlinks in install.sh"
+echo "  - Add config files to $DOTFILES_DIR/config/"
 echo "  - Update Brewfile: brew bundle dump --file=$DOTFILES_DIR/Brewfile"
 echo ""
