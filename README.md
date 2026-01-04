@@ -10,15 +10,114 @@
 │   ├── init.lua
 │   ├── input-source-switcher.lua
 │   └── CLAUDE.md
+├── config/                    # ~/.config 심볼릭 링크 대상
+│   ├── nvim/                 # Neovim (LazyVim)
+│   ├── zed/                  # Zed editor
+│   ├── ghostty/              # Modern terminal
+│   ├── fish/                 # Fish shell
+│   ├── git/                  # Git 전역 설정
+│   ├── alacritty/            # Terminal
+│   ├── kitty/                # Terminal
+│   ├── zellij/               # Terminal multiplexer
+│   ├── iterm2/               # macOS terminal
+│   ├── doom/                 # Doom Emacs
+│   ├── emacs/                # GNU Emacs
+│   ├── opencode/             # OpenCode editor
+│   ├── raycast/              # Productivity tool
+│   ├── broot/                # File browser
+│   ├── gh/                   # GitHub CLI
+│   ├── gh-dash/              # GitHub dashboard
+│   ├── containers/           # Podman containers
+│   └── waveterm/             # Terminal
 ├── Brewfile                   # Homebrew 패키지 목록
 ├── install.sh                 # 자동 설치 스크립트
 ├── .gitignore
 └── README.md
 
-~/.hammerspoon → ~/workspace/personal/dotfiles/hammerspoon/ (심볼릭 링크)
+~/.hammerspoon → ~/workspace/personal/dotfiles/hammerspoon/
+~/.config → ~/workspace/personal/dotfiles/config/ (심볼릭 링크)
 ```
 
 ## 기능
+
+### ~/.config 설정
+
+개발 도구 설정 파일들을 중앙에서 관리합니다. 모든 `~/.config/*` 디렉토리는 `~/workspace/personal/dotfiles/config/`로의 심볼릭 링크입니다.
+
+#### 에디터/IDE
+
+**nvim/** - Neovim 설정 (LazyVim distribution)
+- 키맵, 플러그인, 옵션 설정
+- Lua 기반 설정
+
+**zed/** - Zed editor
+- vim_mode, 테마, 폰트 사이즈 설정
+
+**doom/** - Doom Emacs configuration
+- Emacs 설정 프레임워크
+- 모듈화된 설정 구조
+
+**emacs/** - GNU Emacs
+- Doom Emacs 배포판
+
+**opencode/** - OpenCode editor
+- 에디터 설정
+
+#### 터미널 에뮬레이터
+
+**ghostty/** - Modern terminal emulator
+- 터미널 테마, 키바인딩, 폰트 설정
+- GPU 가속
+
+**alacritty/** - GPU-accelerated terminal
+- 터미널 색상, 폰트 설정
+
+**kitty/** - GPU-accelerated terminal
+- 터미널 설정
+
+**iterm2/** - macOS专用 terminal
+- 프로필, 색상, 키 설정
+
+**waveterm/** - Terminal emulator
+- 터미널 세션, 프리셋
+
+#### 터미널 도구
+
+**zellij/** - Terminal multiplexer
+- 키바인딩, 플러그인 설정
+- tmux 대안
+
+**fish/** - Fish shell
+- 쉘 환경 변수, 함수, aliases
+- 자동완성 설정
+
+#### 버전 관리
+
+**git/** - Git 전역 설정
+- 전역 gitignore
+- Git 별칭, 설정
+
+#### CLI 도구
+
+**broot/** - File browser & tree search
+- 파일 탐색 커스터마이징
+- verb, skin 설정
+
+**gh/** - GitHub CLI
+- git_protocol, editor, aliases
+- hosts.yml은 .gitignore로 제외됨
+
+**gh-dash/** - GitHub CLI dashboard
+- PR/Issues 대시보드 설정
+- 섹션, 필터, 레이아웃
+
+**containers/** - Podman containers
+- 컨테이너 설정
+
+#### 프로덕티비티
+
+**raycast/** - macOS productivity tool
+- 단축키, 스크립트, 확장
 
 ### Hammerspoon
 - **자동 입력 소스 전환**: Ghostty 앱에 포커스 시 자동으로 영어 입력 소스로 전환
