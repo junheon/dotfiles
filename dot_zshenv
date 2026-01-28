@@ -1,0 +1,2 @@
+# Set ZDOTDIR to keep ~ clean
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"

@@ -1,0 +1,10 @@
+#theme = dark:Solarized Dark Higher Contrast,light:Builtin Solarized Light
+#theme = dark:Solarized Dark Higher Contrast,light:iTerm2 Solarized Light
+#theme = dark:Solarized Dark Higher Contrast,light:Man Page
+theme = dark:Solarized Dark Higher Contrast,light:Gruvbox Material Light
+
+
+font-family = "Hack Nerd Font Mono"
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = shift+enter=text:\x1b\r

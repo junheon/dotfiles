@@ -1,0 +1,79 @@
+[user]
+    name = Junheon Lee
+    email = junheon1029@gmail.com
+
+[core]
+    editor = nvim
+    autocrlf = false
+    excludesfile = ~/.config/git/ignore
+
+[init]
+    defaultBranch = main
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[merge]
+    summary = true
+    verbosity = 1
+
+[diff]
+    algorithm = patience
+    mnemonicprefix = true
+
+[rerere]
+    enabled = true
+
+[branch]
+    autosetupmerge = true
+
+[color]
+    ui = true
+
+[alias]
+    a = add
+    b = branch -v
+    c = commit -m
+    ca = commit -am
+    ci = commit
+    amend = commit --amend
+    co = checkout
+    nb = checkout -b
+    cp = cherry-pick -x
+    d = diff
+    dc = diff --cached
+    last = diff HEAD^
+    l = log --graph --date=short
+    changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+    short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+    simple = log --pretty=format:\" * %s\"
+    pl = pull
+    ps = push
+    rc = rebase --continue
+    rs = rebase --skip
+    r = remote -v
+    unstage = reset HEAD
+    uncommit = reset --soft HEAD^
+    filelog = log -u
+    ss = stash
+    sl = stash list
+    sa = stash apply
+    sd = stash drop
+    s = status
+    st = status
+    t = tag -n
+    recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+    snapshot = !git stash save \"snapshot: $(date)\" && git stash apply \"stash@{0}\"
+    contributors = shortlog --summary --numbered --email
+
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
+[format]
+    pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset

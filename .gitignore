@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Zsh compiled files
+*.zwc
+
+# Local secrets (not tracked)
+dot_config/zsh/secrets.zsh

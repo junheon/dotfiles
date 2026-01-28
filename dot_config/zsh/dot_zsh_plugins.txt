@@ -1,0 +1,14 @@
+# Prompt
+romkatv/powerlevel10k
+
+# Completions (load before compinit)
+zsh-users/zsh-completions
+
+# Suggestions & Highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+
+# fzf integration
+junegunn/fzf path:shell/completion.zsh
+junegunn/fzf path:shell/key-bindings.zsh
