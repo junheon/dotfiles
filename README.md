@@ -101,9 +101,16 @@ Claude Code와 호환되도록 구성:
 | 테마 | solarized-dark | 다크 테마 |
 | 기본 모드 | locked | 모든 키가 앱으로 전달 |
 | 모드 전환 | `Ctrl+G` | zellij unlocked 모드 진입 |
-| 자동 시작 | zellij attach -c | 터미널 시작 시 자동 연결/생성 |
+
+**별칭**:
+| 별칭 | 명령어 | 설명 |
+|------|--------|------|
+| `zj` | `zellij attach -c` | 기존 세션 연결 또는 새로 생성 |
+| `zjn` | `zellij` | 항상 새 세션 |
+| `zjs` | `zellij list-sessions` | 세션 목록 |
 
 **사용법**:
+- `zj`로 zellij 시작 (기존 세션 있으면 연결, 없으면 새로 생성)
 - 기본 상태에서 Claude Code의 `Ctrl+O`, `Ctrl+T` 등 단축키 정상 작동
 - `Ctrl+G` 누르면 zellij 모드 진입 → `p`(Pane), `t`(Tab), `n`(Resize) 등 사용 가능
 
