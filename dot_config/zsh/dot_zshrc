@@ -75,3 +75,9 @@ export VISUAL="nvim"
 
 # ── Starship prompt ────────────────────────────────────────────────
 eval "$(starship init zsh)"
+
+# ── Zellij 자동 시작 ───────────────────────────────────────────────
+# 중첩 방지 + 기존 세션에 자동 연결 (없으면 새로 생성)
+if [[ -z "$ZELLIJ" ]]; then
+    zellij attach -c
+fi

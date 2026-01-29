@@ -34,3 +34,5 @@ cscope.po.out
 
 # SASS
 .sass-cache
+
+**/.claude/settings.local.json

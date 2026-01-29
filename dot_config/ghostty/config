@@ -1,8 +1,8 @@
 #theme = dark:Solarized Dark Higher Contrast,light:Builtin Solarized Light
 #theme = dark:Solarized Dark Higher Contrast,light:iTerm2 Solarized Light
 #theme = dark:Solarized Dark Higher Contrast,light:Man Page
-theme = dark:Solarized Dark Higher Contrast,light:Gruvbox Material Light
-
+#theme = dark:Solarized Dark Higher Contrast,light:Gruvbox Material Light
+theme = Solarized Dark Higher Contrast
 
 font-family = "Hack Nerd Font Mono"
 

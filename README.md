@@ -92,6 +92,21 @@ author/plugin-name
 
 `dot_config/zsh/aliases/` 디렉토리에 `*.zsh` 파일 추가
 
+### Zellij 설정
+
+Claude Code와 호환되도록 구성:
+
+| 설정 | 값 | 설명 |
+|------|-----|------|
+| 테마 | solarized-dark | 다크 테마 |
+| 기본 모드 | locked | 모든 키가 앱으로 전달 |
+| 모드 전환 | `Ctrl+G` | zellij unlocked 모드 진입 |
+| 자동 시작 | zellij attach -c | 터미널 시작 시 자동 연결/생성 |
+
+**사용법**:
+- 기본 상태에서 Claude Code의 `Ctrl+O`, `Ctrl+T` 등 단축키 정상 작동
+- `Ctrl+G` 누르면 zellij 모드 진입 → `p`(Pane), `t`(Tab), `n`(Resize) 등 사용 가능
+
 ## 롤백
 
 문제 발생 시:
