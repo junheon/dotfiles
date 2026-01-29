@@ -1,6 +1,3 @@
-# Prompt
-romkatv/powerlevel10k
-
 # Completions (load before compinit)
 zsh-users/zsh-completions
 
