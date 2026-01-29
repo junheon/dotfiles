@@ -66,6 +66,9 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 [[ -d "$BUN_INSTALL" ]] && export PATH="$BUN_INSTALL/bin:$PATH"
 
+# ── Local bin ───────────────────────────────────────────────────────
+export PATH="$HOME/.local/bin:$PATH"
+
 # ── Editor ──────────────────────────────────────────────────────────
 export EDITOR="nvim"
 export VISUAL="nvim"
