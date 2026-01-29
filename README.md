@@ -22,6 +22,20 @@ macOS 개발 환경 설정 (chezmoi 기반)
 | **컨테이너** | Docker | 개발 환경 |
 | **Git** | lazygit, delta | TUI, diff 도구 |
 
+## Shell 스택
+
+| 계층 | 도구 | 역할 |
+|------|------|------|
+| Shell | Zsh | 기본 셸 |
+| Plugin Manager | Antidote | Zsh 플러그인 관리 |
+| Prompt | Starship | 크로스플랫폼 프롬프트 |
+| Completions | zsh-completions | 명령어 자동완성 |
+| Suggestions | zsh-autosuggestions | 히스토리 기반 제안 |
+| Highlighting | zsh-syntax-highlighting | 문법 하이라이팅 |
+| History Search | zsh-history-substring-search | 히스토리 검색 |
+| Directory Jump | zoxide | 스마트 디렉토리 이동 |
+| Fuzzy Finder | fzf | 퍼지 검색 통합 |
+
 ## 빠른 시작
 
 새 Mac에서:

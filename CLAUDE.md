@@ -2,7 +2,7 @@
 
 ## Structure
 - chezmoi-based dotfiles with symlink from `~/.local/share/chezmoi`
-- Shell: Zsh + Antidote (plugin manager) + Powerlevel10k
+- Shell: Zsh + Antidote (plugin manager) + Starship (prompt)
 - `dot_` prefix = chezmoi naming convention for dotfiles
 
 ## Key Directories
