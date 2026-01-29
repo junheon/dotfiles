@@ -30,6 +30,35 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "description": "Right Option + Tab → Caps Lock (HHKB style)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "mandatory": ["right_option"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    { "key_code": "caps_lock" }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [
+                                            {
+                                                "vendor_id": 1256,
+                                                "product_id": 28705
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
